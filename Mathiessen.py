@@ -29,15 +29,7 @@ def dn(mu,T,delta):
     beta=11600.9/T
     return 1.47*10**(18)*integrate.quad(lambda x: g(x,delta)*(df(x,mu,T)+df(x,-mu,T)),delta/2,delta/2+mu+T/116)[0]
 
-'''delta=0.
-mulist=np.linspace(-delta/2-0.1,0.1+delta/2,100)
-nlist=[n(mu,50,delta) for mu in mulist]
-plt.plot(mulist,nlist)'''
-'''delta=0.1
-mulist=np.linspace(-delta/2,delta/2,50)
-nlist=[n(mu,50,delta) for mu in mulist]
-plt.scatter(mulist,nlist)
-plt.show()'''
+
 
 delta=0.02
 
@@ -60,11 +52,10 @@ for ni in nlist:
     mulist.append(mui)
     nchecklist.append(n(mui,T,delta))
 #Checks that the values of n obtained through the solver match the values calculated through the distribution function
-'''plt.plot(nlist,nchecklist)
+plt.plot(nlist,nchecklist)
 plt.show()
-mulist=np.array(mulist)'''
+mulist=np.array(mulist)
 
-#eta=0.9997797797797798
 eta=0
 #Relaxation time assuming a mixture of long-range and short-range scattering.
 def tau(eps,eta):
@@ -88,28 +79,4 @@ Llist=[L(mu,T,eta,delta) for mu in mulist]
 plt.scatter(nlist,Llist)
 plt.show()
 
-np.savetxt("Long-range_Delta=0.02.txt",(mulist,nlist,Llist),delimiter=',')
-#Find the minima for L
-'''etalist=np.linspace(0.8,1,1000)
-Lmin=1
-mumin=0
-etamin=0.99
-for mu in mulist:
-    for eta in etalist:
-        t=L(mu,T,eta,delta)
-        if t<Lmin:
-            Lmin=t
-            etamin=eta
-            mumin=mu
 
-print(Lmin,etamin,mumin)'''
-#0.8587528094913409 0.9997797797797798 0.035363535353535355
-#0.03751295659702157 0.99 0.7367585585585585 with gap 0.05
-'''kappalist=[kappa(mu,T,eta) for mu in mulist]
-plt.plot(mulist,kappalist)
-plt.show()'''
-'''df=pd.DataFrame(nlist)
-df.to_csv("nlist.csv", index=False)
-df=pd.DataFrame(mulist)
-df.to_csv("mulist.csv", index=False)
-'''
