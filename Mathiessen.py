@@ -1,3 +1,7 @@
+'''This code calculates the transport coefficients for monolayer graphene assuming a Fermi-liquid regime with long-range and short-range scattering. The theory for this has been discussed
+in Section 6 of the Supplemental Material of the manuscript titled "Universality in quantum critical flow of charge and heat in ultra-clean graphene" by Aniket Majumdar et al.'''
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.integrate as integrate
